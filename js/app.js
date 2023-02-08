@@ -149,19 +149,25 @@ function int_using_simpsons_rule(ft, a, b, n) {
     ctx.beginPath();
     ctx.strokeStyle = '#00FFD1';
     ctx.lineWidth = 1;
-    var y = 0, x = 0;
-    var S = 0;
     for (var i=1; i<n; i++) {
         var prev = [a + (i-1)*dx, ft(a + (i-1)*dx)];
         var current = [a + i*dx, ft(a + i*dx)];
         var next = [a + (i+1)*dx, ft(a + (i+1)*dx)];
 
         var eq = polynomial2params(prev[0], prev[1], current[0], current[1], next[0], next[1]);
-        plot(x => eq.a * x*x + eq.b * x + eq.c, 0, 4, ctx.strokeStyle);
+        plot(x => eq.a * x*x + eq.b * x + eq.c, prev[0], next[0], ctx.strokeStyle);
     }
     ctx.stroke();
     ctx.closePath();
-    return S;
+
+    var coeff = [4, 2];
+    var S = ft(a) + ft(b);
+    var x = a+dx;
+    for (var i=0; i<n-2; i++) {
+        x += dx;
+        S += ft(x) * coeff[i%2];
+    }
+    return S * dx/3;
 }
 
 function plot(ft, a, b, fillStyle = 'red') {
