@@ -145,20 +145,14 @@ function polynomial2params(x0, x1, x2, y0, y1, y2) {
 
 function int_using_simpsons_rule(ft, a, b, n) {
     var dx = (b-a) / n;
-    var s = 280/4;
-    ctx.beginPath();
-    ctx.strokeStyle = '#00FFD1';
-    ctx.lineWidth = 1;
     for (var i=1; i<n; i++) {
         var prev = [a + (i-1)*dx, ft(a + (i-1)*dx)];
         var current = [a + i*dx, ft(a + i*dx)];
         var next = [a + (i+1)*dx, ft(a + (i+1)*dx)];
 
         var eq = polynomial2params(prev[0], prev[1], current[0], current[1], next[0], next[1]);
-        plot(x => eq.a * x*x + eq.b * x + eq.c, prev[0], next[0], ctx.strokeStyle);
+        plot(x => eq.a * x*x + eq.b * x + eq.c, prev[0], next[0], '#00FFD1');
     }
-    ctx.stroke();
-    ctx.closePath();
 
     var coeff = [4, 2];
     var S = ft(a) + ft(b);
