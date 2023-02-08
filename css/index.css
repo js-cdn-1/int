@@ -1,0 +1,13 @@
+#cnv1 {
+    width: 600px;
+    height: 600px;
+    background: #0F0E0E;
+}
+
+.control-panel {
+    width: 320px;
+}
+
+.control-panel button {
+    flex: 1;
+}
