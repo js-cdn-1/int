@@ -11,3 +11,26 @@
 .control-panel button {
     flex: 1;
 }
+
+h2 {
+    font-family: 'Patrick Hand', cursive;
+    border-left: 4px solid #30E3DF !important;
+    border-right: 4px solid #30E3DF !important;
+    border: 1px solid #03001C;
+}
+h5 span {
+    /* font-family: 'Patrick Hand', cursive; */
+    font-size: 16px;
+}
+.box {
+    border-left: 4px solid #30E3DF !important;
+    background: #fcfcfc;
+}
+.box2 {
+    border-left: 4px solid #F94A29 !important;
+    background: #fcfcfc;
+}
+.box3 {
+    border-left: 4px solid #00FFAB !important;
+    background: #fcfcfc;
+}

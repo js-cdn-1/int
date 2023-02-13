@@ -79,7 +79,7 @@ function update_method(new_method_id) {
 }
 
 window.onload = function () {
-    update_example(0);
+    update_example(example_id);
 }
 
 
@@ -116,7 +116,7 @@ function int_using_rectangles(ft, a, b, n) {
     var dx = (b-a) / n;
     var s = 280/4;
     ctx.beginPath();
-    ctx.strokeStyle = '#16FF00';
+    ctx.strokeStyle = '#03C988';
     ctx.lineWidth = 1;
     var y = 0, x = 0;
     var S = 0;
@@ -134,6 +134,8 @@ function int_using_rectangles(ft, a, b, n) {
 }
 
 function polynomial2params(x0, x1, x2, y0, y1, y2) {
+    // console.log([x0, x1, x2, y0, y1, y2])
+    
     var a = ((x2-x0) * (y1-y0) - (x1-x0) * (y2-y0)) / ((x1*x1 - x0*x0) * (x2-x0) - (x2*x2 - x0*x0) * (x1-x0));
 
     var b = (y2 - y0 - a * (x2*x2 - x0*x0)) / (x2 - x0);
@@ -150,8 +152,18 @@ function int_using_simpsons_rule(ft, a, b, n) {
         var current = [a + i*dx, ft(a + i*dx)];
         var next = [a + (i+1)*dx, ft(a + (i+1)*dx)];
 
-        var eq = polynomial2params(prev[0], prev[1], current[0], current[1], next[0], next[1]);
+        var eq = polynomial2params(prev[0], current[0], next[0], prev[1], current[1], next[1]);
+        // console.log(eq);
         plot(x => eq.a * x*x + eq.b * x + eq.c, prev[0], next[0], '#00FFD1');
+
+        var array = [prev, current, next];
+        for (var j=0; j<3; j++) {
+            ctx.beginPath();
+            ctx.fillStyle = '#fff';
+            ctx.arc(300 + array[j][0] * 280/4, 300 - array[j][1] * 280/4, 2, 0, 2*Math.PI, false);
+            ctx.fill();
+            ctx.closePath();
+        }
     }
 
     var coeff = [4, 2];
@@ -189,7 +201,7 @@ function animate() {
 
     var ft = examples[example_id].ft, a = examples[example_id].a, b = examples[example_id].b;
 
-    plot(ft, a, 4, '#FFEA20');
+    plot(ft, a, 4, '#FF0032');
     var sn;
     if (method_id == 0) {
         sn = int_using_rectangles(ft, a, b, Math.floor(N));

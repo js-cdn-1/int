@@ -25,6 +25,23 @@
   <body>
     <!-- Start your project here-->
     <div class="container">
+      <div class="col d-flex">
+        <div class="box px-2 my-4">
+          <h5>Méthode I <span>( Rectangles )</span></h5>
+          <p>Cette méthode, très élémentaire, basée sur les sommes de <i>Cauchy-Riemann</i> (approchant l'aire sous une courbe) et appliquée à une fonction f continue, permet le calcul approché d'intégrales en choisissant une subdivision régulière de pas \(x_{i+1} - x_i = \frac{(b - a)}{n}\), donc indépendant de \(i\) avec une valeur de \(n\) "suffisamment grande".</p>
+  
+          <p>On obtient une succession de rectangles en rose ci-contre, d'où le nom de cette méthode, approchant l'aire sous la courbe,  où ci est choisi ici au "milieu" de \(\left[x_i; x_{i+1}\right]\).</p>
+          <p>On calcule : $$ S_n = \frac{b-a}{n} \sum_{i=0}^{n-1} f\left(a + i\frac{b-a}{n}\right) $$</p>
+          <p>Le passage à la limite fournit l'intégrale cherchée.</p>
+        </div>
+  
+        <!-- <div class="box px-2 my-4">
+          <h5>Methode II <span>( Segment \(AB\) )</span></h5>
+          <p>Soient \(A\) et \(B\) deux points d'un espace affine \(E\). Le segment \(AB\), noté
+              \( \left[AB\right]\), est l'ensemble des barycentres de \(A\) et \(B\) affectés de coefficients tous deux positifs.</p>
+          <p>i.e. \( \left[AB\right] = \{ \alpha A + (1-\alpha) B \mid \alpha \in \left[0, 1\right] \} \)</p>
+        </div> -->
+      </div>
       <!-- Tabs navs -->
       <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
         <li class="nav-item" role="presentation">
@@ -98,6 +115,13 @@
         </div>
       </div>
     </div>
+
+
+    <footer>
+      <div class="text-center p-4">
+        © 2023 Copyright (makain la copyright la walo)
+      </div>
+    </footer>
     <!-- End your project here-->
 
     <!-- MDB -->
