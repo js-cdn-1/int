@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>INTEGRALE APP</title>
+    <title>Calcul numérique d'une intégrale</title>
     <!-- MDB icon -->
     <!-- <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" /> -->
     <!-- Font Awesome -->
@@ -17,6 +17,7 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
     />
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
     <!-- MDB -->
     <link rel="stylesheet" href="css/mdb.min.css" />
     <link rel="stylesheet" href="css/index.css">
@@ -25,7 +26,11 @@
   <body>
     <!-- Start your project here-->
     <div class="container">
-      <div class="col d-flex">
+      <div class="col d-flex flex-column align-items-center">
+        <div class="d-flex flex-column">
+          <h2 class="my-4 p-2">Calcul numérique d'une intégrale</h2>
+          <p style="font-size: 20px; font-style: italic; font-family: 'Patrick Hand'; font-weight: 600; color: #6F1AB6;">Réalisé par AYOUB SIRAI, SAMIRA MONFII</p>
+        </div>
         <div class="box px-2 my-4">
           <h5>Méthode I <span>( Rectangles )</span></h5>
           <p>Cette méthode, très élémentaire, basée sur les sommes de <i>Cauchy-Riemann</i> (approchant l'aire sous une courbe) et appliquée à une fonction f continue, permet le calcul approché d'intégrales en choisissant une subdivision régulière de pas \(x_{i+1} - x_i = \frac{(b - a)}{n}\), donc indépendant de \(i\) avec une valeur de \(n\) "suffisamment grande".</p>
@@ -34,13 +39,23 @@
           <p>On calcule : $$ S_n = \frac{b-a}{n} \sum_{i=0}^{n-1} f\left(a + i\frac{b-a}{n}\right) $$</p>
           <p>Le passage à la limite fournit l'intégrale cherchée.</p>
         </div>
-  
-        <!-- <div class="box px-2 my-4">
-          <h5>Methode II <span>( Segment \(AB\) )</span></h5>
-          <p>Soient \(A\) et \(B\) deux points d'un espace affine \(E\). Le segment \(AB\), noté
-              \( \left[AB\right]\), est l'ensemble des barycentres de \(A\) et \(B\) affectés de coefficients tous deux positifs.</p>
-          <p>i.e. \( \left[AB\right] = \{ \alpha A + (1-\alpha) B \mid \alpha \in \left[0, 1\right] \} \)</p>
-        </div> -->
+
+        <img src="img/rects.png" width="300px" alt="rectangles">
+
+        <div class="box px-2 my-4">
+          <h5>Méthode II <span>( Simpson )</span></h5>
+          <p>Cette méthode utilise l'approximation d'ordre 2 de \(f\) par un polynôme quadratique \(P\) prenant les mêmes valeurs que \(f\) aux points d'abscisse \(a\), \(b\) et \(m = \frac{(a + b)}{2}\). Pour déterminer l'expression de cette parabole (polynôme de degré 2), on utilise l'interpolation lagrangienne.</p>
+          <p>Le résultat peut être mis sous la forme: $$ P(x) = f(a)\frac{(x-m)(x-b)}{(a-m)(a-b)} + f(m)\frac{(x-a)(x-b)}{(m-a)(m-b)} + f(b)\frac{(x-a)(x-m)}{(b-a)(b-m)} $$</p>
+          <p>Un polynôme étant une fonction très facile à intégrer, on approche l'intégrale de la fonction f sur l'intervalle [a, b], par l'intégrale de P sur ce même intervalle. On a ainsi la simple formule: $$ \int_a^b f(x)dx \approx \int_a^b P(x)dx = \frac{b-a}{6} \left[ f(a) + 4f\left(\frac{a+b}{2}\right) + f(b) \right] $$</p>
+        </div>
+
+        <button onclick="window.open('p2.html');" type="button" class="btn btn-dark btn-roundedx my-2 mt-0 align-self-start">p2 tool</button>
+
+        <img src="img/simpson.png" width="400px" alt="rectangles">
+      </div>
+
+      <div class="d-flex">
+
       </div>
       <!-- Tabs navs -->
       <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
